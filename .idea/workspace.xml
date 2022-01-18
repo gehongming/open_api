@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d9fd210f-4165-4d81-af74-9828057a7e9f" name="Default Changelist" comment="参数传递 放到excel文件 通过jsonpath" />
+    <list default="true" id="d9fd210f-4165-4d81-af74-9828057a7e9f" name="Default Changelist" comment="参数传递 放到excel文件 通过jsonpath">
+      <change afterPath="$PROJECT_DIR$/data/testcase_demo.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/testcase_demo2.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/base_api_crm.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/base_api_crm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/chose_case.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/chose_case.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/handle_context.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/handle_context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/handle_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/handle_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/handle_excel.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/handle_excel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/handle_log.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/handle_log.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/handle_path.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/handle_path.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/handle_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/handle_request.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +60,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../clink2_autotest" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/data" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -59,9 +72,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Clink2_openapi\data" />
       <recent name="F:\Clink2_openapi\data\daily_c2" />
       <recent name="F:\Clink2_openapi\testcases" />
-      <recent name="F:\Clink2_openapi\data" />
       <recent name="F:\Clink2_openapi" />
       <recent name="F:\Clink2_openapi\common" />
     </key>
@@ -215,6 +228,9 @@
       <workItem from="1636023558768" duration="622000" />
       <workItem from="1636107520117" duration="351000" />
       <workItem from="1636334317882" duration="66000" />
+      <workItem from="1641373314639" duration="22000" />
+      <workItem from="1642092050732" duration="1000" />
+      <workItem from="1642476375991" duration="3000000" />
     </task>
     <task id="LOCAL-00001" summary="clink2 接口自动化测试第一次提交">
       <created>1634630886465</created>

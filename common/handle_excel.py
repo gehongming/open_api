@@ -1,12 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
--------------------------------------------------
-@File Name: handle_excel.py
-@author: gaojie
-@time:  2021/8/2 19:56
-@function：
--------------------------------------------------
-"""
 import openpyxl
 
 
@@ -45,6 +36,11 @@ class HandleExcel:
                 values.append(i.value)
             # 将该行的数据和表头进行打包，转换为字典
             case = dict(zip(title, values))
+            if case.get('actual'):
+                case['actual'] = eval(case.get('actual'))
+            else:
+                case['actual'] = None
+            case["expected"] = eval(case["expected"])
             # 将该行数据打包的字典，放入cases_data中
             cases_data.append(case)
         # 返回读取出来的所有数据
@@ -57,6 +53,7 @@ class HandleExcel:
         :param column: 列表
         :param value: 写入的值
         :return:
+        暂时废弃 因为多线程会导致报错
         """
         # 获取工作簿对象
         wb = openpyxl.load_workbook(self.filename)
@@ -66,6 +63,7 @@ class HandleExcel:
         sh.cell(row=row, column=column, value=value)
         # 把工作簿保存为文件
         wb.save(self.filename)
+        wb.close()
 
 
 #
@@ -77,19 +75,13 @@ if __name__ == '__main__':
     from common.handle_data import EnvData
 
     # 调试读数据的代码
-    sheet_name = "test_call_client_extent"
-    filename = os.path.join(DATA_DIR, 'daily_c2', "call_apicases_daily.xlsx")
+    sheet_name = "test_ticket"
+    filename = os.path.join(DATA_DIR, 'daily', "crm_apicases_daily.xlsx")
     excel = HandleExcel(filename,sheet_name)
     cases = excel.read_data()
     print(cases)
-    a = cases[0].get('jsonpath_exp_save')
-    a = eval(a)
-
-    resp = {"status": 200, "message": "查询成功",
-         "result": [{"id": 45, "qno": "0000", "name": "产品组", "ticketStrategy": "online_average", "clients": []}]}
-
-    c = EnvData().re_par(a,resp)
-    print(c)
+    # a = cases[0].get('jsonpath_exp_save')
+    # a = eval(a)
 
     # 调试写数据的代码
     # excel = HandleExcel("apicases.xlsx", "customer_params")

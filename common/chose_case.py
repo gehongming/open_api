@@ -16,18 +16,20 @@ class ChoseCase:
         """
         根据关键词执行对应的测试用例。
         """
-        print(case)
-        if case == 'daily':
-            DIR = DAILY_CALL_DIR
-        elif case == 'daily_c2':
-            DIR = DAILY_C2_CALL_DIR
-        elif case == 'daily_crm':
-            DIR = DAILY_CRM_DIR
-        elif case == 'all':
-            DIR = CASE_DIR
-        else:
-            return 'BYEBYE'
-        return DIR
+        CaseInfoDict = {'daily': [DAILY_DIR, 'test*.py'],
+                        'daily_crm': [DAILY_DIR, 'test_crm*.py'],
+                        'daily_call': [DAILY_DIR, 'test_call*.py'],
+                        'daily_cc': [DAILY_DIR, 'test_cc*.py'],
+                        'daily_kbs': [DAILY_DIR, 'test_kbs*.py'],
+                        'daily_c2': [DAILY_C2_DIR, 'test*.py'],
+                        'daily_call_c2': [DAILY_C2_DIR, 'test_call*.py'],
+                        'daily_crm_c2': [DAILY_C2_DIR, 'test_crm*.py'],
+                        'daily_cc_c2': [DAILY_C2_DIR, 'test_cc*.py'], }
+        try:
+            DIR = CaseInfoDict[str(case)]
+            return DIR
+        except:
+            return '该指令暂无效'
 
 
 if __name__ == '__main__':

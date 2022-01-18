@@ -1,1 +1,8 @@
 /reports/*
+.pytest_cache
+/logs/*
+__pycache__/
+db.sqlite3
+.idea/
+/conf/global.conf
+demo*

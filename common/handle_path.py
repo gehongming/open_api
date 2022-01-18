@@ -30,9 +30,8 @@ LOG_DIR = os.path.join(BASE_DIR, "logs")
 
 # 用例脚本所在的目录路径
 CASE_DIR = os.path.join(BASE_DIR, "testcases")  # 所有用例
-DAILY_CALL_DIR = os.path.join(BASE_DIR, "testcases", "test_daily")  # 呼叫open_api
-DAILY_C2_CALL_DIR = os.path.join(BASE_DIR, "testcases", "test_daily_c2")  # 呼叫clink2
-DAILY_CRM_DIR = os.path.join(BASE_DIR, "testcases", "test_daily_crm")  # 呼叫open_api
+DAILY_DIR = os.path.join(BASE_DIR, "testcases", "test_openapi")  # open_api
+DAILY_C2_DIR = os.path.join(BASE_DIR, "testcases", "test_c2")  # clink2
 
 
 # 所有用例数据所在的目录路径
