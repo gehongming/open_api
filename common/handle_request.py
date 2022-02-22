@@ -9,6 +9,7 @@ from unittest import TestCase
 from common.handle_openapi import HandleOpenapi
 from common.handle_log import log
 from common.handle_context import Context
+from common.handle_data import EnvData
 from common.config import *
 
 
@@ -53,11 +54,10 @@ class HandleRequest:
             else:
                 return "Method is not 'GET' or 'POST'"
             par = case.get('jsonpath_exp_save')
+            # from common.handle_data import EnvData
             if par:
-                from common.handle_data import EnvData
-                if par != None:
-                    re_par = EnvData().re_par_new(eval(par), response.json(),re_cls=re_cls)
-                    print(re_par)
+                re_par = EnvData().re_par_new(eval(par), response.json(), re_cls=re_cls)
+                print(re_par)
             return response
         else:
             log.info("用例跳过")

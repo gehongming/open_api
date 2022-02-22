@@ -82,14 +82,15 @@ class EnvData:
 
     def re_par_new(self, par, resp, re_cls):
         """
-        par: 列表格式
+        par: jsonpath_exp_save 列表嵌套字典
         resp：请求返回值
         re_cls：用例类
+        作用：jsonpath_exp_save提取特定返回值，并存储于特定类的属性中
         """
         error_list = []
         if isinstance(par, list):
             for exp in par:
-                for k,v in exp.items():
+                for k, v in exp.items():
                     cashu = jmespath.search(v, resp)
                     if cashu:
                         setattr(re_cls, k, cashu)
