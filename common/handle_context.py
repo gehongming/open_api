@@ -24,7 +24,7 @@ class Context:
                 elif hasattr(EnvData, g):
                     v = str(getattr(EnvData, g))
                 else:
-                    print(f'找不到参数化的值{data}')
+                    print(f'找不到{data}参数化的值')
                     raise e
             data = re.sub(self.p, v, data, count=1)  # 替换
         return data

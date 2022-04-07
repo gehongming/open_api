@@ -88,21 +88,23 @@ class EnvData:
         作用：jsonpath_exp_save提取特定返回值，并存储于特定类的属性中
         """
         error_list = []
+        success_list = []
         if isinstance(par, list):
             for exp in par:
                 for k, v in exp.items():
                     cashu = jmespath.search(v, resp)
-                    if cashu:
+                    if cashu or cashu == 0:
                         setattr(re_cls, k, cashu)
-                    elif cashu == 0:
-                        setattr(re_cls, k, cashu)
+                        success_list.append(k)
+                    # elif cashu == 0:
+                    #     setattr(re_cls, k, cashu)
                     else:
                         setattr(re_cls, k, None)
                         error_list.append(k)
             if error_list:
-                return (f'转换成功,该字段--{error_list}--没有正常转换，手动转为None')
+                return (f'{success_list}提取成功,{error_list}没有正常提取，手动设置None')
             else:
-                return ('转换成功')
+                return (f'{success_list}提取成功')
         else:
             return (f'{par}格式错误')
 

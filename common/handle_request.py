@@ -70,31 +70,28 @@ class HandleRequest:
         # 测试数据进行转换,替换参数
         time.sleep(int(case.get('sleep'))) if case.get('sleep') else time.sleep(0)
         if not case.get("skip"):
-            if case["data"] != None:
+            if case.get('data'):
                 data = json.loads(Context().re_replace_new(case["data"]))
-            # 获取请求方法
-            url = Context().re_replace_new(case["interface"])
+                log.info(f"用例--{case['title']}请求数据：{data}")
+            # 获取用例中的请求方法、平台
             method = case["method"]
-            # 根据客户端不同 获取不同的header。url
-            if case["target"] == 'console':
-                cookies = Context().re_replace_new({"Cookie":"#console_cookie#"})
-                cookies = json.loads(cookies.replace("'",'"'))
-                url = config.get('env', 'base_console_url') + url
-            else:
-                cookies = Context().re_replace_new({"Cookie":"#agent_cookie#"})
-                cookies = json.loads(cookies.replace("'", '"'))
-                url = config.get('env', 'base_agent_url') + url
+            target = case['target'].lower()
+            # 根据客户端不同 获取不同的cookies, url
+            cookies = Context().re_replace_new({"Cookie": f"#{target}_cookie#"})
+            cookies = json.loads(cookies.replace("'", '"'))
+
+            url = Context().re_replace_new(case["interface"])
+            url = config.get('env', f"base_{target}_url") + url
+
+            log.info(f"用例--{case['title']}---请求url：{url}")
             # 请求方法。
-            if method.lower() in ['get','delete']:
-                log.info(f"用例--{case['title']}---请求url：{url}")
+            if method.lower() in ['get', 'delete']:
                 resp = request(method=method, url=url, cookies=cookies, verify=False)
             elif method.lower() in ['post', 'put']:
-                log.info(f"用例--{case['title']}请求url：{url}")
-                log.info(f"用例--{case['title']}请求数据：{data}")
                 if case["content-type"] == "json":
-                    resp = request(method=method, url=url, json=data, cookies=cookies,  verify=False)
+                    resp = request(method=method, url=url, json=data, cookies=cookies, verify=False)
                 else:
-                    resp = request(method=method, url=url, data=data, cookies=cookies,  verify=False)
+                    resp = request(method=method, url=url, data=data, cookies=cookies, verify=False)
             par = case.get('jsonpath_exp_save')
             if par:
                 from common.handle_data import EnvData
