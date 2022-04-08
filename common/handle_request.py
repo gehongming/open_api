@@ -119,15 +119,15 @@ class HandleRequest:
             try:
                 TestCase.assertEqual(self, expected["status_code"], status_code)
                 TestCase.assertEqual(self, jsons, actual)
-                log.info("实际结果：{}".format(response.json()))
+                log.info(f"用例--{case['title']}--执行通过")
             except AssertionError as e:
                 log.error(f"用例--{case['title']}--执行未通过")
-                log.info(f"用例--{case['title']}预期结果：{expected}")
-                log.info(f"用例--{case['title']}实际结果：{response.text}")
                 log.exception(e)
                 # 结果回写excel中
                 # excel.write_data(row=row, column=8, value="未通过")
                 raise e
+            log.info(f"用例--{case['title']}预期结果：{expected}")
+            log.info(f"用例--{case['title']}实际结果：{response.text}")
         #     else:
         #         # 结果回写excel中
         #         # excel.write_data(row=row, column=8, value="通过")
