@@ -18,6 +18,7 @@ class Context:
             try:
                 v = config.get('data', g)  # 根据KEY取配置文件里面的值
             except configparser.NoOptionError as e:
+                print(f"配置文件下--data--没有--{g}")
                 from common.handle_data import EnvData
                 if hasattr(re_cls, g):
                     v = str(getattr(re_cls, g))  # 如果被替换的值是int，会报错，需要转换果格式
