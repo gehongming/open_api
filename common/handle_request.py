@@ -68,8 +68,9 @@ class HandleRequest:
     def clink2_request(case, re_cls):
         """常规页面接口专用"""
         # 测试数据进行转换,替换参数
-        time.sleep(int(case.get('sleep'))) if case.get('sleep') else time.sleep(0)
+
         if not case.get("skip"):
+            time.sleep(int(case.get('sleep'))) if case.get('sleep') else time.sleep(0)
             if case.get('data'):
                 data = json.loads(Context().re_replace_new(case["data"]))
                 log.info(f"用例--{case['title']}请求数据：{data}")
@@ -126,8 +127,9 @@ class HandleRequest:
                 # 结果回写excel中
                 # excel.write_data(row=row, column=8, value="未通过")
                 raise e
-            log.info(f"用例--{case['title']}预期结果：{expected}")
-            log.info(f"用例--{case['title']}实际结果：{response.text}")
+            finally:
+                log.info(f"用例--{case['title']}预期结果：{expected}")
+                log.info(f"用例--{case['title']}实际结果：{response.text}")
         #     else:
         #         # 结果回写excel中
         #         # excel.write_data(row=row, column=8, value="通过")
