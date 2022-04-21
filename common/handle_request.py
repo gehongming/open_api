@@ -1,6 +1,7 @@
 import json
 import time
 import jmespath
+import requests
 import urllib3
 from icecream import ic
 from requests import request
@@ -26,9 +27,9 @@ class HandleRequest:
         # 请求方法
         method = case["method"]
         path = case["interface"]
-        time.sleep(int(case.get('sleep'))) if case.get('sleep') else time.sleep(0)
         if not case.get("skip"):
-            data = Context().re_replace_new(case['data'],re_cls=re_cls)
+            time.sleep(int(case.get('sleep'))) if case.get('sleep') else time.sleep(0)
+            data = Context().re_replace_new(case['data'], re_cls=re_cls)
             if method == "GET":
                 api = HandleOpenapi(path=path, method=method)
                 if data == 'None':
@@ -48,9 +49,9 @@ class HandleRequest:
                 if case["content-type"] == "json":
                     response = request(method=method, url=url, json=data, headers=headers, timeout=20)
                 elif case["content-type"] == "form-data":
-                    response = request(method=method, url=url, files=data, timeout=20)
+                    response = requests.post(url=url, files=data, headers=headers)
                 else:
-                    response = request(method=method, url=url, json=data, headers=sms_headers, timeout=20)
+                    response = requests.post(url=url, files=data, headers=headers)  # 发送信息专用 form_data_sms
             else:
                 return "Method is not 'GET' or 'POST'"
             par = case.get('jsonpath_exp_save')
@@ -72,8 +73,11 @@ class HandleRequest:
         if not case.get("skip"):
             time.sleep(int(case.get('sleep'))) if case.get('sleep') else time.sleep(0)
             if case.get('data'):
-                data = json.loads(Context().re_replace_new(case["data"]))
+                data = json.loads(Context().re_replace_new(case["data"]),re_cls=re_cls)
                 log.info(f"用例--{case['title']}请求数据：{data}")
+            else:
+                data = None
+                log.info(f"用例--{case['title']}请求数据：为空")
             # 获取用例中的请求方法、平台
             method = case["method"]
             target = case['target'].lower()
@@ -93,11 +97,13 @@ class HandleRequest:
                     resp = request(method=method, url=url, json=data, cookies=cookies, verify=False)
                 else:
                     resp = request(method=method, url=url, data=data, cookies=cookies, verify=False)
+            else:
+                return "Method is not [get, delete, post, put]"
             par = case.get('jsonpath_exp_save')
             if par:
                 from common.handle_data import EnvData
                 if par != None:
-                    re_par = EnvData().re_par_new(eval(par), resp.json())
+                    re_par = EnvData().re_par_new(eval(par), resp.json(),re_cls=re_cls)
                     print(re_par)
             return resp
         else:
