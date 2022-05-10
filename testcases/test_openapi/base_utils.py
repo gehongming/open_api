@@ -19,5 +19,5 @@ from common.handle_request import HandleRequest
 from library.myddt import ddt, data
 from common.handle_path import *
 from common.handle_data import EnvData
-from base import base_api_crm
-from base.base_api_im import ImBaseApi, OpenSession
+from common.config import *
+config = ReadConfig()

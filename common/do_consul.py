@@ -12,6 +12,7 @@
 import yaml
 import consul
 from common.config import *
+config = ReadConfig()
 
 
 class DoConsul:

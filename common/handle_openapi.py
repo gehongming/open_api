@@ -20,6 +20,7 @@ import base64
 from common.do_consul import DoConsul
 from urllib.parse import urlencode
 from common.config import *
+config = ReadConfig()
 
 
 protocol = config.get("env", "protocol")

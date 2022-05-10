@@ -19,8 +19,22 @@ class ReadConfig:
             return self.config.get(section,option)
 
 
-config = ReadConfig()
+class WriteConfig:
+
+    def __init__(self):
+        self.config=configparser.ConfigParser()
+        self.config.read(handle_path.GLOBAL_FILE,encoding='utf-8')
+
+    def write(self, value, section='switch', option='on'):
+            self.config.read(handle_path.GLOBAL_FILE)
+            self.config.set(section, option, value)
+            file_global = os.path.join(handle_path.GLOBAL_FILE)
+            with open(file_global, 'w') as wf:
+                self.config.write(wf)
+
+
 if __name__ == '__main__':
+    config = ReadConfig()
     host = config.get("data", "tel")
     print(host)
     # number = int(config.get("data", "chatLimitNumber"))

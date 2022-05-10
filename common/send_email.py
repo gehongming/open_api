@@ -15,7 +15,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from common.handle_path import REPORT_DIR
 from common.config import *
-from common.handle_config import conf
+config = ReadConfig()
 
 
 def send_email():

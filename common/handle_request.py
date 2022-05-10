@@ -12,6 +12,7 @@ from common.handle_log import log
 from common.handle_context import Context
 from common.handle_data import EnvData
 from common.config import *
+config = ReadConfig()
 
 
 class HandleRequest:

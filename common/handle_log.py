@@ -2,6 +2,7 @@ import logging
 from common.handle_path import LOG_DIR
 from common.config import *
 import time
+config = ReadConfig()
 
 
 class HandleLogger:

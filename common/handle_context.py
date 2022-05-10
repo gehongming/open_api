@@ -1,7 +1,7 @@
 import configparser
 import re
-from common.config import config
-
+from common.config import *
+config = ReadConfig()
 
 class Context:
 
