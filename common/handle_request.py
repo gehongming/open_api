@@ -48,11 +48,15 @@ class HandleRequest:
                 log.info(f"用例--{case['title']}请求数据：{data}")
                 data = eval(data)
                 if case["content-type"] == "json":
-                    response = request(method=method, url=url, json=data, headers=headers, timeout=20)
+                    response = request(method=method, url=url, json=data, headers=headers, timeout=20)  # json格式
                 elif case["content-type"] == "form-data":
-                    response = requests.post(url=url, files=data, headers=headers)
+                    if case.get('files'):
+                        files = Context().re_replace_new(case['files'], re_cls=re_cls)
+                        response = requests.post(url=url, data=data, files=eval(files), timeout=20)  # from-data 并且发送文件
+                    else:
+                        response = requests.post(url=url, files=data, headers=headers, timeout=20)  # from-data格式
                 else:
-                    response = requests.post(url=url, files=data, headers=headers)  # 发送信息专用 form_data_sms
+                    response = request(method=method, url=url, json=data, headers=sms_headers, timeout=20)  # 短信用 sms
             else:
                 return "Method is not 'GET' or 'POST'"
             par = case.get('jsonpath_exp_save')
