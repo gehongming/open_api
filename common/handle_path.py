@@ -26,7 +26,7 @@ GLOBAL_FILE = os.path.join(BASE_DIR, "conf", 'global.conf')
 REPORT_DIR = os.path.join(BASE_DIR, "reports")
 # 日志文件所在的目录路径
 LOG_DIR = os.path.join(BASE_DIR, "logs")
-
+FILE_DIR = os.path.join(BASE_DIR,"data", "file")  # 测试文件
 
 # 用例脚本所在的目录路径
 CASE_DIR = os.path.join(BASE_DIR, "testcases")  # 所有用例
