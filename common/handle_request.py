@@ -122,15 +122,24 @@ class HandleRequest:
         断言方法的封装
         """
         if not case.get('skip'):
+
+            assert_type = case.get('assert')
             if expected.get("json"):
                 jsons = expected.get("json")
                 actual = HandleRequest.actual_json(actual, response.json())
+                assert_count = len(actual)
+
             else:
                 jsons = None
                 actual = None
+                assert_count = 0
             try:
                 TestCase.assertEqual(self, expected["status_code"], status_code)
-                TestCase.assertEqual(self, jsons, actual)
+                if assert_count >0:
+                    for i in range(assert_count):
+                        HandleRequest.assert_choose(self, assert_type, jsons[i], actual[i])
+                else:
+                    TestCase.assertEqual(self, jsons, actual)
                 log.info(f"用例--{case['title']}--执行通过")
             except AssertionError as e:
                 log.error(f"用例--{case['title']}--执行未通过")
@@ -139,13 +148,27 @@ class HandleRequest:
                 # excel.write_data(row=row, column=8, value="未通过")
                 raise e
             finally:
-                log.info(f"用例--{case['title']}预期结果：{expected}")
-                log.info(f"用例--{case['title']}实际结果：{response.text}")
+                log.info(f"用例--{case['title']}--预期结果：{expected}")
+                log.info(f"用例--{case['title']}--实际结果：{response.text}")
         #     else:
         #         # 结果回写excel中
         #         # excel.write_data(row=row, column=8, value="通过")
         else:
             log.info(f"用例--{case['title']}--用例跳过")
+
+    @staticmethod
+    def assert_choose(self, assert_type, jsons, actual):
+        if assert_type =='assertEqual' or assert_type == None:  # 相等
+            return TestCase.assertEqual(self, jsons, actual)
+        elif assert_type == 'assertNotEqual':  # 不等
+            return TestCase.assertNotEqual(self, jsons, actual)
+        elif assert_type == 'assertGreaterEqual':   # 大于等于
+            return TestCase.assertGreaterEqual(self, jsons, actual)
+        elif assert_type == 'assertLessEqual':  # 小于等于
+            return TestCase.assertLessEqual(self, jsons, actual)
+        else:
+            log.info('断言方法暂不支持，默认为相等')
+            return TestCase.assertEqual(self, jsons, actual)
 
     @staticmethod
     def actual_json(actual, jsons):
