@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d9fd210f-4165-4d81-af74-9828057a7e9f" name="Default Changelist" comment="参数传递 放到excel文件 通过jsonpath">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/handle_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/handle_request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/testcase_demo.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/testcase_demo.xlsx" afterDir="false" />
-    </list>
+    <list default="true" id="d9fd210f-4165-4d81-af74-9828057a7e9f" name="Default Changelist" comment="参数传递 放到excel文件 通过jsonpath" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,7 +47,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/library" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -63,11 +59,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Clink2_openapi\library" />
       <recent name="F:\Clink2_openapi\data\file" />
       <recent name="F:\Clink2_openapi\data" />
       <recent name="F:\Clink2_openapi\data\daily_c2" />
       <recent name="F:\Clink2_openapi\testcases" />
-      <recent name="F:\Clink2_openapi" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\Clink2_openapi\testcases\test_call_demo" />
@@ -264,6 +260,7 @@
       <workItem from="1657088318831" duration="140000" />
       <workItem from="1657617226631" duration="2000" />
       <workItem from="1657698558673" duration="142000" />
+      <workItem from="1659683537908" duration="494000" />
     </task>
     <task id="LOCAL-00001" summary="clink2 接口自动化测试第一次提交">
       <created>1634630886465</created>
