@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d9fd210f-4165-4d81-af74-9828057a7e9f" name="Default Changelist" comment="参数传递 放到excel文件 通过jsonpath">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/handle_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/handle_request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/testcase_demo.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/testcase_demo.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,6 +263,7 @@
       <workItem from="1657087906888" duration="147000" />
       <workItem from="1657088318831" duration="140000" />
       <workItem from="1657617226631" duration="2000" />
+      <workItem from="1657698558673" duration="142000" />
     </task>
     <task id="LOCAL-00001" summary="clink2 接口自动化测试第一次提交">
       <created>1634630886465</created>

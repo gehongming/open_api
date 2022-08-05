@@ -1,5 +1,6 @@
 import unittest
-from unittestreport import TestRunner
+# from unittestreport import TestRunner
+from library.mytestRunner import *
 
 from common.config import *
 from common.chose_case import ChoseCase
