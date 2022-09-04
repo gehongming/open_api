@@ -96,7 +96,7 @@ class HandleRequest:
             log.info(f"用例--{case['title']}---请求url：{url}")
             # 请求方法。
             if method.lower() in ['get', 'delete']:
-                resp = request(method=method, url=url, cookies=cookies, verify=False)
+                resp = request(method=method, url=url, params=data, cookies=cookies, verify=False)
             elif method.lower() in ['post', 'put']:
                 if case["content-type"] == "json":
                     resp = request(method=method, url=url, json=data, cookies=cookies, verify=False)
