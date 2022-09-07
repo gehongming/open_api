@@ -55,9 +55,11 @@ class HandleOpenapi:
         # print("排序编码后url:",temp_url)
         url_param = self.method + temp_url
         # 对签名进行url编码
-        signature = quote(HandleOpenapi.hash_hmac(url_param, access_key_secret, sha1))
+        # signature = quote(HandleOpenapi.hash_hmac(url_param, access_key_secret, sha1))
+        signature = urlencode({"Signature":HandleOpenapi.hash_hmac(url_param, access_key_secret, sha1)})
         # 加上签名后的url
-        result = temp_url + '&Signature=' + signature
+        result = temp_url + "&" + signature
+        # result = temp_url + '&Signature=' + signature
         res = protocol + "://" + result
         # print("加上签名后的url:", res)
         return res
