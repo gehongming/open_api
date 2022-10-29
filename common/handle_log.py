@@ -15,7 +15,7 @@ class HandleLogger:
         :return: 日志收集器
         """
         # 第一步：创建一个日志收集器
-        log = logging.getLogger("musen")
+        log = logging.getLogger("ghm")
 
         # 第二步：设置收集器收集的等级
         log.setLevel(config.get("log", "level"))

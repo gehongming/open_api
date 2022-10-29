@@ -19,7 +19,7 @@ class MyResult(TestResult):
 
     def __init__(self):
         super().__init__()
-        self.logger = logging.getLogger('tr')
+        self.logger = logging.getLogger('ghm')
 
     def startTest(self, test):
         super().startTest(test)
